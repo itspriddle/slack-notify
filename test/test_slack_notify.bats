@@ -1,5 +1,17 @@
 load test_helper
 
+@test "-V / --version shows version info" {
+  run slack-notify -V
+
+  assert_success
+  assert_output --regexp "slack-notify v[0-9]+\.[0-9]+\.[0-9]+"
+
+  run slack-notify --version
+
+  assert_success
+  assert_output --regexp "slack-notify v[0-9]+\.[0-9]+\.[0-9]+"
+}
+
 @test "-h shows short usage" {
   run slack-notify -h
 

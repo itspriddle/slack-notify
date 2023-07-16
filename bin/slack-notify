@@ -175,6 +175,8 @@ fi
 
 set -e
 
+VERSION="0.0.1"
+
 webhook_url="$SLACK_WEBHOOK_URL"
 
 fields=()
@@ -271,6 +273,9 @@ while [[ "$1" ]]; do
   elif [[ "$arg" =~ ^(--print-payload|-P)$ ]]; then
     print_payload="true"
     shift
+  elif [[ "$arg" =~ ^(--version|-V)$ ]]; then
+    echo "slack-notify v$VERSION"
+    exit 0
   elif [[ "$arg" == "--" ]]; then
     shift
     break
