@@ -4,7 +4,7 @@
 #        slack-notify -F "Field Title|Body" [options]
 #
 # NAME
-#   slack-notify -- send notifications via old school Slack webhook
+#   slack-notify -- send notifications via legacy Slack incoming webhooks
 #
 # SYNOPSIS
 #   slack-notify [options] [message]
@@ -154,6 +154,16 @@
 #   $ slack-notify
 #   This is a message
 #   ^d
+#
+# BUG REPORTS
+#   Issues can be reported on GitHub:
+#
+#   https://github.com/itspriddle/slack-notify/issues
+#
+# AUTHOR
+#   Joshua Priddle <jpriddle@me.com>
+#
+#   https://github.com/itspriddle/slack-notify#readme
 #
 # SEE ALSO
 #   https://api.slack.com/legacy/custom-integrations/messaging/webhooks
