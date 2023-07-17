@@ -75,10 +75,10 @@ TODO
     attachment with the specified index. Eg: `-f1FOOTER`, `--footer10
     FOOTER`.
 
-*-P*, *--print-payload*
+*-P*, *--print-payload*  
     Print the Slack payload instead of sending it.
 
-*-h*, *--help*
+*-h*, *--help*  
     Print this help message.
 
 ### Examples
