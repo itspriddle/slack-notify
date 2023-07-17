@@ -232,7 +232,7 @@ while [[ "$1" ]]; do
     title="${raw_field%"$fs"*}"
     value="${raw_field#*"$fs"}"
 
-    fields[${index-0}]+=$(jq -n \
+    fields[${index:-0}]+=$(jq -n \
       --arg title "$title" \
       --arg value "$value" \
       --argjson short "$short" \
@@ -241,19 +241,19 @@ while [[ "$1" ]]; do
     shift 2
   elif [[ "$arg" =~ ^--color([0-9]+)?$ ]]; then
     index="${arg#--color}"
-    colors[${index-0}]="$2"
+    colors[${index:-0}]="$2"
     shift 2
   elif [[ "$arg" =~ ^--footer([0-9]+)?$ ]]; then
     index="${arg#--footer}"
-    footers[${index-0}]="$2"
+    footers[${index:-0}]="$2"
     shift 2
   elif [[ "$arg" =~ ^--pretext([0-9]+)?$ ]]; then
     index="${arg#--pretext}"
-    pretexts[${index-0}]="$2"
+    pretexts[${index:-0}]="$2"
     shift 2
   elif [[ "$arg" =~ ^--fallback([0-9]+)?$ ]]; then
     index="${arg#--fallback}"
-    fallbacks[${index-0}]="$2"
+    fallbacks[${index:-0}]="$2"
     shift 2
   elif [[ "$arg" =~ ^(--icon|-i)$ ]]; then
     icon="$2"
