@@ -4,14 +4,72 @@ Send notifications via legacy Slack incoming webhooks.
 
 Why? Slack keeps letting us create them, so we'll keep using them.
 
-## Usage
+## Synopsis
 
-TODO
+    slack-notify [options] <message>
+    echo "Message" | slack-notify [options]
+    slack-notify -F "Field Title|Body" [options]
+
+## Description
+
+Without the `-F` / `--field` option, a standard text message sent to the
+webhook, either as the first argument or STDIN.
+
+Text Example:
+
+    $ slack-notify "This is a message"
+    $ echo "This is a message | slack-notify"
+
+When `-F` / `--field` is used, a Slack message "attachment" is used (not
+to be confused with a file attachment). Messages sent via legacy webhooks
+can have more than one attachment, or none at all as with th text example
+above. Attachments have one or more fields. By default, one attachment is
+used and multiple fields can be added to it by specifying `-F` / `--field`
+more than once. To send more than one attachment, `-F` / `--field` can be
+used with an index; eg: `-F1` / `--field2`. To further style messages, the
+`-c` / `--color`, `-p` / `--pretext`, `-b` / `--fallback`, and `-f` /
+`--footer` options can also be used with an index.
+
+Fields have a title and a value. The option can be used more than
+once. The argument to `-F` / `--field` is a string, separated by the `-s`
+/ `--separator` character (`|` by default).
+
+Slack allows specifying long or short fields. If multiple short fields are
+sent, they will be displayed in 2 columns in Slack clients. Long fields
+span both columns. Fields are marked short by default or when the title is
+prefixed with `short:`. Fields are marked long when the title is prefixed
+with `long:`.
+
+Single attachment example with 2 fields:
+
+    $ slack-notify -F "Field Title|Body" -F "Another Field|Body"
+
+Multiple attachments, red and green:
+
+    $ slack-notify \
+      -F "Field Title|Body" \
+      -F "Another Field|Body" \
+      -c FF0000 \
+      -f "The First Footer" \
+      -F1 "Attachment 2 - Field Title|Body" \
+      -F1 "Attachment 2 - Another Field|Body" \
+      -F1 "long:Attachment 2 - Big Long Field|Body" \
+      -c1 00FF00 \
+      -p1 "Attachment 2 Ready"
+
+The following options have no effect when sending a plaintext message:
+
+- `-b` / `--fallback`
+- `-p` / `--pretext`
+- `-c` / `--color`
+- `-s` / `--separator`
+- `-f` / `--footer`
 
 ### Options
 
 *-w URL*, *--webhook-url URL*  
-    Slack webhook URL. Required unless the `$SLACK_WEBHOOK_URL` is set.
+    Slack webhook URL. Required unless the `$SLACK_WEBHOOK_URL` environment
+    variable is set.
 
 *-c CHANNEL*, *--channel CHANNEL*  
     Slack channel/user to send the message to. If not supplied, the

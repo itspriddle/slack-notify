@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Usage: slack-notify [options] [message]
+# Usage: slack-notify [options] <message>
 #        echo "Message" | slack-notify [options]
 #        slack-notify -F "Field Title|Body" [options]
 #
@@ -7,13 +7,11 @@
 #   slack-notify -- send notifications via legacy Slack incoming webhooks
 #
 # SYNOPSIS
-#   slack-notify [options] [message]
+#   slack-notify [options] <message>
 #   echo "Message" | slack-notify [options]
 #   slack-notify -F "Field Title|Body" [options]
 #
 # DESCRIPTION
-#   Sends an old school Slack webhook.
-#
 #   Without the `-F` / `--field` option, a standard text message sent to the
 #   webhook, either as the first argument or STDIN.
 #
@@ -25,7 +23,7 @@
 #   to be confused with a file attachment). Messages sent via legacy webhooks
 #   can have more than one attachment, or none at all as with th text example
 #   above. Attachments have one or more fields. By default, one attachment is
-#   used and multple fields can be added to it by specifying `-F` / `--field`
+#   used and multiple fields can be added to it by specifying `-F` / `--field`
 #   more than once. To send more than one attachment, `-F` / `--field` can be
 #   used with an index; eg: `-F1` / `--field2`. To further style messages, the
 #   `-c` / `--color`, `-p` / `--pretext`, `-b` / `--fallback`, and `-f` /
@@ -44,7 +42,7 @@
 #   Single attachment example with 2 fields:
 #     $ slack-notify -F "Field Title|Body" -F "Another Field|Body"
 #
-#   Multple attachments, red and green:
+#   Multiple attachments, red and green:
 #     $ slack-notify \
 #       -F "Field Title|Body" \
 #       -F "Another Field|Body" \
@@ -65,7 +63,8 @@
 #
 # OPTIONS
 #   -w URL, --webhook-url URL
-#       Slack webhook URL. Required unless the `$SLACK_WEBHOOK_URL` is set.
+#       Slack webhook URL. Required unless the `$SLACK_WEBHOOK_URL`
+#       environment variable is set.
 #
 #   -c CHANNEL, --channel CHANNEL
 #       Slack channel/user to send the message to. If not supplied, the
