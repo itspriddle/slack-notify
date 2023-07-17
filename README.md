@@ -87,7 +87,10 @@ TODO
 
 ### Optional Configuration
 
-TODO
+`$SLACK_WEBHOOK_URL` can be set to avoid passing webhooks via `-w` /
+`--webhook-url` when calling this script. Example:
+
+    export SLACK_WEBHOOK_URL=https://hooks.slack.com/services/...
 
 ## Installation
 

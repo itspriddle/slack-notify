@@ -140,6 +140,12 @@
 #   -h, --help
 #       Print this help message.
 #
+# OPTIONAL CONFIGURATION
+#   `$SLACK_WEBHOOK_URL` can be set to avoid passing webhooks via `-w` /
+#   `--webhook-url` when calling this script. Example:
+#
+#      export SLACK_WEBHOOK_URL=https://hooks.slack.com/services/...
+#
 # EXAMPLES
 #   Send a simple text notification
 #   $ slack-notify "Warning, something broke"
