@@ -65,7 +65,7 @@ The following options have no effect when sending a plaintext message:
 - `-s` / `--separator`
 - `-f` / `--footer`
 
-### Options
+## Options
 
 *-w URL*, *--webhook-url URL*  
     Slack webhook URL. Required unless the `$SLACK_WEBHOOK_URL` environment
@@ -139,11 +139,11 @@ The following options have no effect when sending a plaintext message:
 *-h*, *--help*  
     Print this help message.
 
-### Examples
+## Examples
 
 TODO
 
-### Optional Configuration
+## Optional Configuration
 
 `$SLACK_WEBHOOK_URL` can be set to avoid passing webhooks via `-w` /
 `--webhook-url` when calling this script. Example:
