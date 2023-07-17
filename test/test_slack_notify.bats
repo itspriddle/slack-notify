@@ -113,7 +113,7 @@ load test_helper
   assert_json ".attachments[0].fields[2].short" "true"
 }
 
-@test "--field with index sets additional attachments" {
+@test "-F / --field with index sets additional attachments" {
   run slack-notify -P \
     -F       "Attachment 1 - Field 1|Value 1" \
     --field  "Attachment 1 - Field 2|Value 2" \
@@ -145,7 +145,7 @@ load test_helper
   assert_json ".attachments[0].color" "#ff0000"
 }
 
-@test "-c / --color sets the attachment color for additional attachments" {
+@test "-c / --color with index sets the attachment color for additional attachments" {
   run slack-notify -P \
     --field  "Field 1|Value" \
     -c       "#ff0000" \
@@ -173,7 +173,7 @@ load test_helper
   assert_json ".attachments[0].fallback" "Fallback 2"
 }
 
-@test "-b / --fallback sets the attachment fallback for additional attachments" {
+@test "-b / --fallback with index sets the attachment fallback for additional attachments" {
   run slack-notify -P \
     -b "Fallback 1" \
     --fallback1 "Fallback 2" \
@@ -184,7 +184,7 @@ load test_helper
   assert_json ".attachments[1].fallback" "Fallback 2"
 }
 
-@test "--fallback defaults to --field title: value" {
+@test "--fallback defaults to 'title: value' for all fields joined by newline" {
   run slack-notify -P \
     --field "Field 1|Value 1" \
     --field "Field 2|Value 2" \
@@ -195,12 +195,18 @@ load test_helper
   assert_json ".attachments[1].fallback" "Field 3: Value 3"$'\n'"Field 4: Value 4"
 }
 
-@test "--pretext sets the attachment pretext" {
+@test "-p / --pretext sets the attachment pretext" {
   run slack-notify -P \
     --pretext "Pretext" \
     --field "Field|Value"
 
   assert_json ".attachments[0].pretext" "Pretext"
+
+  run slack-notify -P \
+    -p "Pretext 2" \
+    --field "Field|Value"
+
+  assert_json ".attachments[0].pretext" "Pretext 2"
 }
 
 @test "-p / --pretext sets the attachment pretext for additional attachments" {
@@ -228,7 +234,7 @@ load test_helper
   assert_json ".attachments[0].footer" "Footer 2"
 }
 
-@test "-f / --footer sets the attachment footer for additional attachments" {
+@test "-f / --footer with index sets the attachment footer for additional attachments" {
   run slack-notify -P \
     -f "Footer 1" \
     --footer1 "Footer 2" \
@@ -239,7 +245,7 @@ load test_helper
   assert_json ".attachments[1].footer" "Footer 2"
 }
 
-@test "--separator sets the field title/value separator" {
+@test "-s / --separator sets the field title/value separator" {
   run slack-notify -P \
     -s "@" \
     --field "Field@Value"
@@ -248,8 +254,8 @@ load test_helper
   assert_json ".attachments[0].fields[0].value" "Value"
 
   run slack-notify -P \
-    --separator "@" \
-    --field "Field 2@Value 2"
+    --separator "^" \
+    --field "Field 2^Value 2"
 
   assert_json ".attachments[0].fields[0].title" "Field 2"
   assert_json ".attachments[0].fields[0].value" "Value 2"
