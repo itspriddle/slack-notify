@@ -19,14 +19,16 @@ shellcheck: ## run shellcheck tests
 
 .PHONY: bats
 bats: ## run bats tests
+	./test/setup
 	./test/bats/bin/bats test
 
 .PHONY: bootstrap
 bootstrap: ## bootstrap for development/test
-	gem install kramdown-man
+	command -v kramdown-man &> /dev/null || gem install kramdown-man
 	./test/setup
 
 share/man/man1/slack-notify.1: doc/man/slack-notify.1.md
+	command -v kramdown-man &> /dev/null || gem install kramdown-man
 	kramdown-man doc/man/slack-notify.1.md > share/man/man1/slack-notify.1
 
 .PHONY: man
