@@ -28,8 +28,8 @@
 #   used and multple fields can be added to it by specifying `-F` / `--field`
 #   more than once. To send more than one attachment, `-F` / `--field` can be
 #   used with an index; eg: `-F1` / `--field2`. To further style messages, the
-#   `-c` / `--color`, `-p` / `--pretext`, `-f` / `--fallback`, and `--footer`
-#   options can also be used with an index.
+#   `-c` / `--color`, `-p` / `--pretext`, `-b` / `--fallback`, and `-f` /
+#   `--footer` options can also be used with an index.
 #
 #   Fields have a title and a value. The option can be used more than
 #   once. The argument to `-F` / `--field` is a string, separated by the `-s`
@@ -49,7 +49,7 @@
 #       -F "Field Title|Body" \
 #       -F "Another Field|Body" \
 #       -c FF0000 \
-#       --footer "The First Footer" \
+#       -f "The First Footer" \
 #       -F1 "Attachment 2 - Field Title|Body" \
 #       -F1 "Attachment 2 - Another Field|Body" \
 #       -F1 "long:Attachment 2 - Big Long Field|Body" \
