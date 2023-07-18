@@ -173,20 +173,17 @@ macOS and most Linux distributions add `/usr/local/bin` to `$PATH` and
 or if you want to make `slack-notify` available for all users, you can install
 it globally as follows:
 
-    git clone https://github.com/itspriddle/slack-notify /tmp/slack-notify
-    cd /tmp/slack-notify
+    git clone https://github.com/itspriddle/slack-notify
+    cd slack-notify
     sudo make install PREFIX=/usr/local
-    cd
-    rm -rf /tmp/slack-notify
 
 ### Install locally via make
 
 If you don't want a global installation, another common pattern is to install
 to `~/.local`. This is enabled on Ubuntu by default.
 
-    mkdir -p ~/.local/src
-    git clone https://github.com/itspriddle/slack-notify ~/.local/src/slack-notify
-    cd ~/.local/src/slack-notify
+    git clone https://github.com/itspriddle/slack-notify
+    cd slack-notify
     make install PREFIX=~/.local
 
 To test, verify that `slack-notify -V` works and that `man slack-notify`
@@ -210,10 +207,17 @@ The `slack-notify` script can also be downloaded manually and saved to any
 directory in your `$PATH` (such as `/usr/local/bin` or `~/.local/bin` as
 described above).
 
-    curl -s -L https://github.com/itspriddle/slack-notify/raw/master/bin/slack-notify > /tmp/slack-notify
-    sudo mv /tmp/slack-notify /usr/local/bin
-    sudo chmod +x /usr/local/bin/slack-notify
+    wget https://github.com/itspriddle/slack-notify/raw/master/bin/slack-notify
+    chmod +x slack-notify
+    sudo mv slack-notify /usr/local/bin
     slack-notify -V
+
+Install the man page:
+
+    wget https://github.com/itspriddle/slack-notify/raw/master/share/man/man1/slack-notify.1
+    mkdir -p /usr/local/share/man/man1
+    mv slack-notify.1 /usr/local/share/man/man1
+    man slack-notify
 
 ## Development
 
