@@ -128,7 +128,7 @@ The following options have no effect when sending a plaintext message:
 
 *-f[0-9]+ FOOTER*, *--footer[0-9]+ FOOTER*  
     Same as `--footer` above, but adds the footer to the message
-    attachment with the specified index. Eg: `-f1FOOTER`,
+    attachment with the specified index. Eg: `-f1 FOOTER`,
     `--footer2 FOOTER`.
 
 *-P*, *--print-payload*  
