@@ -2,8 +2,6 @@
 load test_helper/bats-support/load
 load test_helper/bats-assert/load
 
-export SLACK_WEBHOOK_URL="CI"
-
 # Run on test suite setup
 setup() {
   # get the containing directory of this file use $BATS_TEST_FILENAME instead
