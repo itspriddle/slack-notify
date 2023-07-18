@@ -9,13 +9,13 @@ jobs:
   release:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Get version
         id: version
-        run: echo ::set-output name=VERSION::${GITHUB_REF##refs/tags/}
+        run: echo "name=VERSION=${GITHUB_REF##refs/tags/}" >> $GITHUB_STATE
       - name: Prepare zip archive
-        run: VERSION=${{ steps.version.outputs.VERSION }} make archive
+        run: VERSION=${{ env.VERSION }} make archive
       - name: Upload archive to release
         uses: softprops/action-gh-release@v1
         with:
-          files: pkg/slack-notify-${{ steps.version.outputs.VERSION }}.zip
+          files: pkg/slack-notify-${{ env.VERSION }}.zip
