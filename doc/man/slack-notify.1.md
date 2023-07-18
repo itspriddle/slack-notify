@@ -20,7 +20,7 @@ Text Example:
 
 When `-F` / `--field` is used, a Slack message "attachment" is used (not
 to be confused with a file attachment). Messages sent via legacy webhooks
-can have more than one attachment, or none at all as with th text example
+can have more than one attachment, or none at all as with the text example
 above. Attachments have one or more fields. By default, one attachment is
 used and multiple fields can be added to it by specifying `-F` / `--field`
 more than once. To send more than one attachment, `-F` / `--field` can be
