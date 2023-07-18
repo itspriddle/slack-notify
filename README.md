@@ -47,15 +47,15 @@ Single attachment example with 2 fields:
 Multiple attachments, red and green:
 
     $ slack-notify \
-      -F "Field Title|Body" \
-      -F "Another Field|Body" \
-      -c FF0000 \
-      -f "The First Footer" \
-      -F1 "Attachment 2 - Field Title|Body" \
-      -F1 "Attachment 2 - Another Field|Body" \
-      -F1 "long:Attachment 2 - Big Long Field|Body" \
-      -c1 00FF00 \
-      -p1 "Attachment 2 Ready"
+        -F "Field Title|Body" \
+        -F "Another Field|Body" \
+        -c FF0000 \
+        -f "The First Footer" \
+        -F1 "Attachment 2 - Field Title|Body" \
+        -F1 "Attachment 2 - Another Field|Body" \
+        -F1 "long:Attachment 2 - Big Long Field|Body" \
+        -c1 00FF00 \
+        -p1 "Attachment 2 Ready"
 
 The following options have no effect when sending a plaintext message:
 
