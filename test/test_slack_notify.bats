@@ -184,14 +184,15 @@ load test_helper
   assert_json ".attachments[1].fallback" "Fallback 2"
 }
 
-@test "--fallback defaults to 'title: value' for all fields joined by newline" {
+@test "--fallback defaults to '[Pretext]\\ntitle: value' for all fields joined by newline" {
   run slack-notify -P \
     --field "Field 1|Value 1" \
     --field "Field 2|Value 2" \
+    --pretext "Pretext 1" \
     --field1 "Field 3|Value 3" \
     --field1 "Field 4|Value 4"
 
-  assert_json ".attachments[0].fallback" "Field 1: Value 1"$'\n'"Field 2: Value 2"
+  assert_json ".attachments[0].fallback" "Pretext 1"$'\n'"Field 1: Value 1"$'\n'"Field 2: Value 2"
   assert_json ".attachments[1].fallback" "Field 3: Value 3"$'\n'"Field 4: Value 4"
 }
 

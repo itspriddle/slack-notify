@@ -344,7 +344,8 @@ if [[ "${#fields[@]}" -gt 0 ]]; then
       '.attachments += [{
           "fallback": (
             if $fallback == "" then
-              $fields | map("\(.title): \(.value)") | join("\n")
+              [$pretext] + ($fields | map("\(.title): \(.value)")) |
+                map(select(. != "")) | join("\n")
             else
               $fallback
             end
