@@ -12,8 +12,8 @@
 #   slack-notify -F "Field Title|Body" [options]
 #
 # DESCRIPTION
-#   Without the `-F` / `--field` option, a standard text message sent to the
-#   webhook, either as the first argument or STDIN.
+#   Without the `-F` / `--field` option, a standard text message is sent to
+#   the webhook, either as the first argument or STDIN.
 #
 #   Text Example:
 #     $ slack-notify "This is a message"

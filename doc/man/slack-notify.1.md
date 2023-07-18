@@ -10,7 +10,7 @@
 
 ## DESCRIPTION
 
-Without the `-F` / `--field` option, a standard text message sent to the
+Without the `-F` / `--field` option, a standard text message is sent to the
 webhook, either as the first argument or STDIN.
 
 Text Example:
