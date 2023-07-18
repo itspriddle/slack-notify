@@ -92,8 +92,8 @@ The following options have no effect when sending a plaintext message:
 
 *-F[0-9]+ FIELD*, *--field[0-9]+ FIELD*  
     Same as `-F` / `--field` above, but adds the field a to the message
-    attachment with the specified index. Eg: `-F1 FIELD`, `--field10
-    FIELD`.
+    attachment with the specified index. Eg: `-F1 FIELD`,
+    `--field2 FIELD`.
 
 *-b FALLBACK*, *--fallback FALLBACK*  
     Fallback text to send. This is displayed in notifications. If not
@@ -104,34 +104,34 @@ The following options have no effect when sending a plaintext message:
 *-b[0-9]+ FALLBACK*, *--fallback[0-9]+ FALLBACK*  
     Same as `-f` / `--fallback` above, but adds the fallback text to the
     message attachment with the specified index. Eg: `-b1 FALLBACK`,
-    `--fallback10 FALLBACK`.
+    `--fallback2 FALLBACK`.
 
 *-p PRETEXT*, *--pretext PRETEXT*  
-    Message pretext, displayed above the fieldset. Ignored if at least one
+    Message pretext, displayed above the attachment. Ignored if at least one
     field is not supplied with `-F` / `--field`.
 
 *-p[0-9]+ PRETEXT*, *--pretext[0-9]+ PRETEXT*  
     Same as `-p` / `--pretext` above, but adds the pretext to the message
-    attachment with the specified index. Eg: `-p1 PRETEXT`, `--pretext10
-    PRETEXT`.
+    attachment with the specified index. Eg: `-p1 PRETEXT`,
+    `--pretext2 PRETEXT`.
 
 *-c COLOR*, *--color COLOR*  
-    Color of the fieldset in CSS hex format (i.e. `#FF0000`). Ignored if at
+    Color of the attachment in CSS hex format (i.e. `#FF0000`). Ignored if at
     least one field is not supplied with `-F` / `--field`.
 
 *-c[0-9]+ COLOR*, *--color[0-9]+ COLOR*  
     Same as `-c` / `--color` above, but adds the color to the message
-    attachment with the specified index. Eg: `-c1 COLOR`, `--color10
-    COLOR`.
+    attachment with the specified index. Eg: `-c1 COLOR`,
+    `--color2 COLOR`.
 
 *-f FOOTER*, *--footer FOOTER*  
-    Footer text, displayed below the fieldset. Ignored if at least one
+    Footer text, displayed below the attachment. Ignored if at least one
     field is not supplied with `-F` / `--field`.
 
 *-f[0-9]+ FOOTER*, *--footer[0-9]+ FOOTER*  
     Same as `--footer` above, but adds the footer to the message
-    attachment with the specified index. Eg: `-f1FOOTER`, `--footer10
-    FOOTER`.
+    attachment with the specified index. Eg: `-f1FOOTER`,
+    `--footer2 FOOTER`.
 
 *-P*, *--print-payload*  
     Print the Slack payload instead of sending it.
