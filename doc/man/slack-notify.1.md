@@ -95,9 +95,9 @@ The following options have no effect when sending a plaintext message:
 
 *-b FALLBACK*, *--fallback FALLBACK*  
     Fallback text to send. This is displayed in notifications. If not
-    supplied, a default fallback is created using a line "Title: Value"
-    for each field. Ignored if at least one field is not supplied with
-    `-F` / `--field`.
+    supplied, a default fallback is created using any pretext provided and a
+    line "Title: Value" for each field. Ignored if at least one field is not
+    supplied with `-F` / `--field`.
 
 *-b[0-9]+ FALLBACK*, *--fallback[0-9]+ FALLBACK*  
     Same as `-f` / `--fallback` above, but adds the fallback text to the
@@ -139,7 +139,49 @@ The following options have no effect when sending a plaintext message:
 
 ## EXAMPLES
 
-TODO
+Note: all examples below assume the `$SLACK_WEBHOOK_URL` environment variable
+is set or you must include the `-w` / `--webhook-url` option.
+
+Send a simple text notification
+
+    $ slack-notify "Warning, something broke"
+
+Or use a multi-line body
+
+    $ slack-notify "Subject
+
+    This is the body"
+
+Using STDIN
+
+    $ { echo "Errors\n\n"; tail -5 /var/log/messages } | slack-notify
+
+    $ slack-notify
+    This is a message
+    ^d
+
+    $ slack-notify <<< 'Red alert, Number 1!'
+
+Send a single attachment with 3 fields, the top two short, and the last
+one long, with the color set to green, and a simple pretext
+
+    $ slack-notify \
+        -F "Date|2023-07-17" \
+        -F 'Amount|$10.99' \
+        -F 'long:Description|Pizza' \
+        -p 'New Order Received:' \
+        -c 00FF00
+
+Send two attachments, the first with 2 short fields with the color set to
+green, the second with 1 long attachment with the color set to red.
+
+    $ slack-notify \
+        -F1 'Username|josh' \
+        -F1 'GitHub|<https://github.com/itspriddle|itspriddle>' \
+        -c1 00FF00 \
+        -p1 'New User Created:' \
+        -F1 'long:Field 3|Value 3' \
+        -c2 FF0000
 
 ## OPTIONAL CONFIGURATION
 

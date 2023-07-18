@@ -128,9 +128,9 @@ attachment with the specified index\. Eg: \fB-F1 FIELD\fR,
 .TP
 \fI\-b FALLBACK\fP, \fI\-\-fallback FALLBACK\fP
 Fallback text to send\. This is displayed in notifications\. If not
-supplied, a default fallback is created using a line \[lq]Title: Value\[rq]
-for each field\. Ignored if at least one field is not supplied with
-\fB-F\fR \[sl] \fB--field\fR\.
+supplied, a default fallback is created using any pretext provided and a
+line \[lq]Title: Value\[rq] for each field\. Ignored if at least one field is not
+supplied with \fB-F\fR \[sl] \fB--field\fR\.
 .LP
 .TP
 \fI\-b\[lB]0\-9\[rB]\[pl] FALLBACK\fP, \fI\-\-fallback\[lB]0\-9\[rB]\[pl] FALLBACK\fP
@@ -182,7 +182,64 @@ Print this help message\.
 .SH EXAMPLES
 .LP
 .PP
-TODO
+Note: all examples below assume the \fB$SLACK_WEBHOOK_URL\fR environment variable
+is set or you must include the \fB-w\fR \[sl] \fB--webhook-url\fR option\.
+.LP
+.PP
+Send a simple text notification
+.LP
+.nf
+\[Do] slack\-notify \[dq]Warning, something broke\[dq]
+.fi
+.LP
+.PP
+Or use a multi\-line body
+.LP
+.nf
+\[Do] slack\-notify \[dq]Subject
+
+This is the body\[dq]
+.fi
+.LP
+.PP
+Using STDIN
+.LP
+.nf
+\[Do] \[lC] echo \[dq]Errors\en\en\[dq]; tail \-5 \[sl]var\[sl]log\[sl]messages \[rC] \[or] slack\-notify
+
+\[Do] slack\-notify
+This is a message
+\(had
+
+\[Do] slack\-notify <<< \(aqRed alert, Number 1!\(aq
+.fi
+.LP
+.PP
+Send a single attachment with 3 fields, the top two short, and the last
+one long, with the color set to green, and a simple pretext
+.LP
+.nf
+\[Do] slack\-notify \e
+    \-F \[dq]Date\[or]2023\-07\-17\[dq] \e
+    \-F \(aqAmount\[or]\[Do]10\.99\(aq \e
+    \-F \(aqlong:Description\[or]Pizza\(aq \e
+    \-p \(aqNew Order Received:\(aq \e
+    \-c 00FF00
+.fi
+.LP
+.PP
+Send two attachments, the first with 2 short fields with the color set to
+green, the second with 1 long attachment with the color set to red\.
+.LP
+.nf
+\[Do] slack\-notify \e
+    \-F1 \(aqUsername\[or]josh\(aq \e
+    \-F1 \(aqGitHub\[or]<https:\[sl]\[sl]github\.com\[sl]itspriddle\[or]itspriddle>\(aq \e
+    \-c1 00FF00 \e
+    \-p1 \(aqNew User Created:\(aq \e
+    \-F1 \(aqlong:Field 3\[or]Value 3\(aq \e
+    \-c2 FF0000
+.fi
 .LP
 .SH OPTIONAL CONFIGURATION
 .LP

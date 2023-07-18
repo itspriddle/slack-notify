@@ -92,9 +92,9 @@
 #
 #   -b FALLBACK, --fallback FALLBACK
 #       Fallback text to send. This is displayed in notifications. If not
-#       supplied, a default fallback is created using a line "Title: Value"
-#       for each field. Ignored if at least one field is not supplied with
-#       `-F` / `--field`.
+#       supplied, a default fallback is created using any pretext provided and
+#       a line "Title: Value" for each field. Ignored if at least one field is
+#       not supplied with `-F` / `--field`.
 #
 #   -b[0-9]+ FALLBACK, --fallback[0-9]+ FALLBACK
 #       Same as `-f` / `--fallback` above, but adds the fallback text to the
@@ -145,14 +145,17 @@
 #   variable is set or you must include the `-w` / `--webhook-url` option.
 #
 #   Send a simple text notification
+#
 #     $ slack-notify "Warning, something broke"
 #
 #   Or use a multi-line body
+#
 #     $ slack-notify "Subject
 #
 #     This is the body"
 #
 #   Using STDIN
+#
 #     $ { echo "Errors\n\n"; tail -5 /var/log/messages } | slack-notify
 #
 #     $ slack-notify
