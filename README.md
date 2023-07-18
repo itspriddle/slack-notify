@@ -1,6 +1,6 @@
 # slack-notify
 
-Send notifications via legacy Slack incoming webhooks.
+Send notifications via legacy Slack incoming webhooks. Requires Bash, jq, and curl.
 
 Why? Slack keeps letting us create them, so we'll keep using them.
 
