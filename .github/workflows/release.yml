@@ -21,3 +21,6 @@ jobs:
           files: pkg/slack-notify-${{ env.VERSION }}.zip
       - name: Update homebrew tap
         run: gh workflow run release.yml -f version=${{ env.version }} -R itspriddle/homebrew-slack-notify
+        with:
+          env:
+            GH_TOKEN: ${{ github.token }}
