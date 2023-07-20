@@ -25,4 +25,4 @@ jobs:
       - name: Update homebrew tap
         run: gh workflow run release.yml -f version=${{ env.VERSION }} -R itspriddle/homebrew-slack-notify
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
