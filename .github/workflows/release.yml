@@ -7,6 +7,8 @@ on:
 
 jobs:
   release:
+    permissions:
+      actions: write
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
@@ -20,6 +22,6 @@ jobs:
         with:
           files: pkg/slack-notify-${{ env.VERSION }}.zip
       - name: Update homebrew tap
-        run: gh workflow run release.yml -f version=${{ env.version }} -R itspriddle/homebrew-slack-notify
+        run: gh workflow run release.yml -f version=${{ env.VERSION }} -R itspriddle/homebrew-slack-notify
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
