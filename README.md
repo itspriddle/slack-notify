@@ -206,7 +206,7 @@ be copied to a directory in your `$MANPATH`.
 
 On macOS, `slack-notify` can be installed via Homebrew with:
 
-    brew install itspriddle/brews/slack-notify
+    brew install itspriddle/slack-notify/slack-notify
 
 ### Install globally via make
 
